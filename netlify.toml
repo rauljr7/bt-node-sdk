@@ -1,0 +1,8 @@
+[build]
+  base = "./"
+   publish = "html/"
+  command = "node index"
+  [context.production]
+  publish = "html/"
+  command = "node index"
+  environment = { NODE_VERSION = "12.18.3" }
