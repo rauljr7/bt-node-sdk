@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Braintree Node SDK REST APP</title>
+    <link rel="stylesheet" href="https://assets.rauluriartejr.com/css/skeleton/normalize.css" />
+    <link rel="stylesheet" href="https://assets.rauluriartejr.com/css/skeleton/skeleton.css" />
+    <style>
+    details {
+        border: 1px solid rgb(71, 71, 71);
+        border-radius: 4px;
+        padding: .5em .5em 0;
+    }
+
+    summary {
+        display: list-item;
+        font-weight: bold;
+        margin: -.5em -.5em 0;
+        padding: .5em;
+    }
+
+    details[open] {
+        padding: .5em;
+    }
+
+    details[open] summary {
+        border-bottom: 1px solid #aaa;
+        margin-bottom: .5em;
+    }
+    </style>
+</head>
+
+<body>
+    <!-- .container is main centered wrapper -->
+    <div class="container" style="margin-top: 25px">
+        <div clas="row">
+            <h1 style="margin-bottom:1px">Braintree Node SDK</h1>
+            <h4 style="margin-top:1px"><em>REST-ified</em> (Not GraphQL)</h4>
+            <hr>
+        </div>
+        <h5>Host:</h5>
+<pre><code>https://bt.middleware.host</code></pre>
+        <h5>Headers:</h5>
+<pre><code>{
+    "environment": "Sandbox",
+    "merchantid": "merchantID",
+    "publickey": "publicKey",
+    "privatekey": "privateKey"
+}</code></pre>
+        <h5>Method:</h5>
+<pre><code>POST</code></pre>
+        <h2>Available API Calls</h2>
+        <hr>
+
+        <div class="row" style="margin-bottom:5px">
+            <details>
+            <summary>Add On</summary>
+            <strong>All</strong>
+            <hr style="margin-bottom:2px;margin-top:2px">
+            <p>
+                Endpoint: <a href="https://developer.paypal.com/braintree/docs/reference/request/add-on/all/node" target="_blank">
+                /add-on/all
+            </a>
+            </p>
+            <pre><code>//empty body</code></pre>
+            </details>
+        </div>
+
+        <div class="row" style="margin-bottom:5px">
+            <details>
+            <summary>Address</summary>
+            <strong>Create</strong>
+            <p>
+                Endpoint: <a href="https://developer.paypal.com/braintree/docs/reference/request/address/create/node" target="_blank">
+                    /address/create
+                </a>
+            </p>
+<pre><code>{
+    "body": {
+        "customerId": "131866",
+        "firstName": "Jenna",
+        ...
+    }
+}</code></pre>
+<hr style="margin-bottom:2px;margin-top:2px">
+            <strong>Delete</strong>
+            <p>
+                Endpoint: <a href="https://developer.paypal.com/braintree/docs/reference/request/address/delete/node" target="_blank">
+                    /address/delete
+                </a>
+            </p>
+<pre><code>{
+    "body": {
+        "customerId": "131866",
+        "addressId": "32145"
+    }
+}</code></pre>
+<hr style="margin-bottom:2px;margin-top:2px">
+            <strong>Find</strong>
+            <p>
+                Endpoint: <a href="https://developer.paypal.com/braintree/docs/reference/request/address/find/node" target="_blank">
+                    /address/find
+                </a>
+            </p>
+<pre><code>{
+    "body": {
+        "customerId": "131866",
+        "addressId": "32145"
+    }
+}</code></pre>
+<hr style="margin-bottom:2px;margin-top:2px">
+                <strong>Update</strong>
+                <p>
+                    Endpoint: <a href="https://developer.paypal.com/braintree/docs/reference/request/address/update/node" target="_blank">
+                        /address/update
+                    </a>
+                </p>
+<pre><code>{
+    "body": {
+        "customerId": "131866",
+        "addressId": "32145",
+        "address": {
+            "firstName": "Jenna",
+            "lastName": "Smith"
+            ...
+        }
+    }
+}</code></pre>
+            </details>
+        </div>
+
+        <div class="row" style="margin-bottom:5px">
+            <details>
+            <summary>ApplePay</summary>
+            <strong>Register Domain</strong>
+            <p>
+                Endpoint: <a href="https://developer.paypal.com/braintree/docs/reference/request/apple-pay/register-domain/php" target="_blank">
+                    /apple-pay/register-domain
+                </a>
+            </p>
+<pre><code>{
+    "body": {
+        "url": "https://mywebsite.com"
+    }
+}</code></pre>
+            <hr style="margin-bottom:2px;margin-top:2px">
+            <strong>Registered Domains</strong>
+            <p>
+                Endpoint: <a href="https://developer.paypal.com/braintree/docs/reference/request/apple-pay/registered-domains/php" target="_blank">
+                    /apple-pay/registered-domains
+                </a>
+            </p>
+            <pre><code>//Not working, SDK issue</code></pre>
+            <hr style="margin-bottom:2px;margin-top:2px">
+            <strong>Unregister Domain</strong>
+            <p>
+                Endpoint: <a href="https://developer.paypal.com/braintree/docs/reference/request/apple-pay/unregister-domain/php" target="_blank">
+                    /apple-pay/unregister-domain
+                </a>
+            </p>
+<pre><code>{
+    "body": {
+        "url": "https://mywebsite.com"
+    }
+}</code></pre>
+            </details>
+        </div>
+
+        <div class="row" style="margin-bottom:5px">
+            <details>
+            <summary>Client Token</summary>
+            <strong>Generate</strong>
+            <p>
+                Endpoint: <a href="https://developer.paypal.com/braintree/docs/reference/request/client-token/generate/node" target="_blank">
+                    /client-token/generate
+                </a>
+            </p>
+<pre><code>{
+    "body": {
+        "customerId": "131866",
+        "merchantAccountId": "my_account",
+        "options": {
+            "failOnDuplicatePaymentMethod": true,
+            "makeDefault": true,
+            ...
+        }
+    }
+}</code></pre>
+            </details>
+        </div>
+
+        <div class="row" style="margin-bottom:5px">
+            <details>
+            <summary>Credit Card</summary>
+            <strong>Create</strong>
+            <p>
+                Endpoint: <a href="https://developer.paypal.com/braintree/docs/reference/request/credit-card/create/node" target="_blank">
+                    /credit-card/create
+                </a>
+            </p>
+<pre><code>{
+    "body": {
+        "customerId": "124324536",
+        "number": "4111111111111111",
+        "expirationDate": "06/2022",
+        "cvv": "100"
+      }
+}</code></pre>
+<hr style="margin-bottom:2px;margin-top:2px">
+            <strong>Delete</strong>
+            <p>
+                Endpoint: <a href="https://developer.paypal.com/braintree/docs/reference/request/credit-card/delete/node" target="_blank">
+                    /credit-card/delete
+                </a>
+            </p>
+<pre><code>{
+    "body": {
+        "token": "124324536"
+      }
+}</code></pre>
+<hr style="margin-bottom:2px;margin-top:2px">
+            <strong>Expiring Between</strong>
+            <p>
+                Endpoint: <a href="https://developer.paypal.com/braintree/docs/reference/request/credit-card/expiring-between/node" target="_blank">
+                    /credit-card/expiring-between
+                </a>
+            </p>
+<pre><code>//SDK issues, API Works but response hangs
+{
+    "body": {
+        "startDate": "2020-01-01",
+        "endDate": "2021-12-31"
+      }
+}</code></pre>
+<hr style="margin-bottom:2px;margin-top:2px">
+            <strong>Find</strong>
+            <p>
+                Endpoint: <a href="https://developer.paypal.com/braintree/docs/reference/request/credit-card/find/node" target="_blank">
+                    /credit-card/find
+                </a>
+            </p>
+<pre><code>
+{
+    "body": {
+        "token": "87ufd4567"
+      }
+}</code></pre>
+<hr style="margin-bottom:2px;margin-top:2px">
+            <strong>Update</strong>
+            <p>
+                Endpoint: <a href="https://developer.paypal.com/braintree/docs/reference/request/credit-card/update/node" target="_blank">
+                    /credit-card/update
+                </a>
+            </p>
+<pre><code>
+{
+    "body": {
+        "token": "87ufd4567",
+        "creditCard": {
+            "cardholderName": "New Holder",
+            "number": "4111111111111111",
+            "expirationDate": "06/2022",
+            "cvv": "456",
+            "billingAddress": {
+              "region": "IL"
+            },
+            "options": {
+              "verifyCard": true
+            }
+          }
+      }
+}</code></pre>
+            </details>
+        </div>
+
+        <div class="row" style="margin-bottom:5px">
+            <details>
+            <summary>Credit Card Verification</summary>
+            <strong>Search</strong>
+            <p>
+                Endpoint: <a href="https://developer.paypal.com/braintree/docs/reference/request/credit-card-verification/search/node" target="_blank">
+                    /credit-card-verification/search
+                </a>
+            </p>
+<pre><code>//SDK nested classes clash with HTTP limitations</code></pre>
+<hr style="margin-bottom:2px;margin-top:2px">
+            </details>
+        </div>
+
+        <div class="row" style="margin-bottom:5px">
+            <details>
+            <summary>Customer</summary>
+            <strong>Create</strong>
+            <p>
+                Endpoint: <a href="https://developer.paypal.com/braintree/docs/reference/request/customer/create/node" target="_blank">
+                    /customer/create
+                </a>
+            </p>
+<pre><code>{
+    "body": {
+        "firstName": "Jen",
+        "lastName": "Smith",
+        "company": "Braintree",
+        ...
+      }
+}</code></pre>
+<hr style="margin-bottom:2px;margin-top:2px">
+            <strong>Delete</strong>
+            <p>
+                Endpoint: <a href="https://developer.paypal.com/braintree/docs/reference/request/customer/delete/node" target="_blank">
+                    /customer/delete
+                </a>
+            </p>
+<pre><code>{
+    "body": {
+        "customerId": "567iuyetw"
+      }
+}</code></pre>
+<hr style="margin-bottom:2px;margin-top:2px">
+            <strong>Find</strong>
+            <p>
+                Endpoint: <a href="https://developer.paypal.com/braintree/docs/reference/request/customer/find/node" target="_blank">
+                    /customer/find
+                </a>
+            </p>
+<pre><code>{
+    "body": {
+        "customerId": "567iuyetw"
+      }
+}</code></pre>
+<hr style="margin-bottom:2px;margin-top:2px">
+            <strong>Search</strong>
+            <p>
+                Endpoint: <a href="https://developer.paypal.com/braintree/docs/reference/request/customer/search/node" target="_blank">
+                    /customer/search
+                </a>
+            </p>
+<pre><code>//SDK nested classes clash with HTTP limitations</code></pre>
+<hr style="margin-bottom:2px;margin-top:2px">
+            <strong>Update</strong>
+            <p>
+                Endpoint: <a href="https://developer.paypal.com/braintree/docs/reference/request/customer/update/node" target="_blank">
+                    /customer/update
+                </a>
+            </p>
+<pre><code>{
+    "body": {
+        "id": "567iuyetw",
+        "customer": {
+            firstName: "New First Name",
+            lastName: "New Last Name"
+          }
+      }
+}</code></pre>
+<hr style="margin-bottom:2px;margin-top:2px">
+            </details>
+        </div>
+
+        <div class="row" style="margin-bottom:5px">
+            <details>
+            <summary>Discount</summary>
+            <strong>All</strong>
+            <p>
+                Endpoint: <a href="https://developer.paypal.com/braintree/docs/reference/request/discount/all/node" target="_blank">
+                    /discount/all
+                </a>
+            </p>
+<pre><code>//empty body</code></pre>
+<hr style="margin-bottom:2px;margin-top:2px">
+            </details>
+        </div>
+
+        <div class="row" style="margin-bottom:5px">
+            <details>
+            <summary>Dispute</summary>
+            <strong>Accept</strong>
+            <p>
+                Endpoint: <a href="https://developer.paypal.com/braintree/docs/reference/request/dispute/accept/node" target="_blank">
+                    /dispute/accept
+                </a>
+            </p>
+<pre><code>//SDK issues, API Works but response hangs
+{
+    "body": {
+        "disputeId": "gd7f7z83db7zvths"
+      }
+}</code></pre>
+<hr style="margin-bottom:2px;margin-top:2px">
+            </details>
+        </div>
+        
+        <div class="row" style="margin:50px">
+            <hr style="margin-bottom:2px;margin-top:2px">
+        </div>
+    </div>
+</body>
+
+</html>
