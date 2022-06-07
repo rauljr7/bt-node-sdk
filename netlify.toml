@@ -2,5 +2,5 @@
 functions = "functions"
 [context.production]
 publish = "html/"
-command = "node index.js"
+command = "node index"
 environment = { NODE_VERSION = "12.18.3" }
